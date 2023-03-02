@@ -3,6 +3,7 @@ package hello.hellospring.service;
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemoryMemberRepository;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
@@ -13,8 +14,20 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class MemberServiceTest {
 
-    MemberService memberService = new MemberService();
-    MemoryMemberRepository memberRepository = new MemoryMemberRepository();
+    MemberService memberService;
+    MemoryMemberRepository memberRepository;
+    /*
+    * MemberService Repository와 현재Test 아래 Repository=new Repository는 다른 객체임
+    * MemberService Repository를 new생성하지말고 기본생성자로 만든후 23,24라인을 17,18라인처럼 변경 그리고 BeforeEach에서 구현*/
+
+//    MemberService memberService = new MemberService();
+//    MemoryMemberRepository memberRepository = new MemoryMemberRepository();
+
+    @BeforeEach
+    public void beforeEach() {
+        memberRepository = new MemoryMemberRepository();
+        memberService = new MemberService(memberRepository);
+    }
 
     @AfterEach // 메서드 끝나면 삭제하고 다음 메서드 순차적으로 실행 안하면 병렬로 처리되어서 메서드가 지들순서로 실행되어서 에러뜨는경우 있음
     public void afterEach(){
