@@ -28,7 +28,7 @@ public class MemberService {
 
     private void validateDuplicateMember(Member member) {
         memberRepository.findByName(member.getName()).ifPresent(m->{ // 위에 말고 바로 ifPresent사용가능. 이유는 findByName결과가 Optional이니까 가능
-            throw new IllegalStateException("이미 존재하는 회원합니다.");
+            throw new IllegalStateException("이미 존재하는 회원입니다.");
         });
     }
 
