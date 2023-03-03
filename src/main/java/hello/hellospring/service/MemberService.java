@@ -13,7 +13,7 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
-    @Autowired// 마찬가지로 스프링 컨테이너에 MemberServcice 안에있는 MemberRepository 구현체인 MemoryMemberRepositroy의 구현체를 주입해줌
+//    @Autowired// 마찬가지로 스프링 컨테이너에 MemberServcice 안에있는 MemberRepository 구현체인 MemoryMemberRepositroy의 구현체를 주입해줌
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
