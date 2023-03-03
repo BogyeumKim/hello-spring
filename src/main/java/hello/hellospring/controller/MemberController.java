@@ -1,8 +1,11 @@
 package hello.hellospring.controller;
 
+import hello.hellospring.domain.Member;
 import hello.hellospring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class MemberController {
@@ -11,11 +14,26 @@ public class MemberController {
     private final MemberService memberService;
 
     /*
-    * Autowired는 스프링 컨테이너에 생성자를 주입해줌.
-    * 하지만 에러뜨는데 MemberSerivce는 순수 java파일이라 스프링이 인식을못해서 서비스에서도 @Service 애너테이션을추가해야함.
-    * Repositroy역시 똑같이 애너테이션을 추가해줘야 스프링컨테이너에 추가됨.*/
+     * Autowired는 스프링 컨테이너에 생성자를 주입해줌.
+     * 하지만 에러뜨는데 MemberSerivce는 순수 java파일이라 스프링이 인식을못해서 서비스에서도 @Service 애너테이션을추가해야함.
+     * Repositroy역시 똑같이 애너테이션을 추가해줘야 스프링컨테이너에 추가됨.*/
     @Autowired
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
+    }
+
+    @GetMapping("/members/new")
+    public String creatForm() {
+        return "members/creatMemberForm";
+    }
+
+    @PostMapping("/members/new")
+    public String create(MemberForm form) {
+        Member member = new Member();
+        member.setName(form.getName());
+
+        memberService.join(member);
+        
+        return "redirect:/";
     }
 }
