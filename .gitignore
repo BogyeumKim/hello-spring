@@ -8,6 +8,8 @@
 .idea*
 idea/
 gradle/
+.gradle
+.gradle/
 
 # User-specific stuff
 .idea/**/workspace.xml
@@ -172,3 +174,6 @@ gradle-app.setting
 *.hprof
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij,java,gradle
+.gradle/7.6/checksums/checksums.lock
+.gradle/7.6/checksums/md5-checksums.bin
+*.bin
