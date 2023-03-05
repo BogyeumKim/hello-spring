@@ -1,5 +1,6 @@
 package hello.hellospring;
 
+import hello.hellospring.aop.TimeTraceAop;
 import hello.hellospring.repository.*;
 import hello.hellospring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +45,10 @@ public class SpringConfig {
 //        return new JdbcMemberRepository(dataSource); // 매개변수 데이터소스필요하니까 위에서 생성해줌. 스프링이 알아서 주입해줌.
 //        return new JdbcTemplateMemberRepository(dataSource);
 //        return new JpaMemberRepository(em);
+//    }
+
+//    @Bean // TimeTraceAop class에 Component 안붙이면 빈 등록해주기.
+//    public TimeTraceAop timeTraceAop() {
+//        return new TimeTraceAop();
 //    }
 }
